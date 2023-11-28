@@ -5,18 +5,27 @@ class ClickCounterClass extends Component {
     this.state = {
       count: 0,
     };
+
   }
-  handleClick = () => {
+  handleClickAdd = () => {
     this.setState((prevState) => ({
       count: prevState.count + 1,
     }));
   };
+
+  handleClickExclude = () => {
+    this.setState((prevState) => ({
+      count: prevState.count - 1,
+    }));
+  };
+
   render() {
     return (
       <div className="blue">
         <h2>Click Counter - Class Component</h2>
         <p>Count: {this.state.count}</p>
-        <button onClick={this.handleClick}>Click Me</button>
+        <button onClick={this.handleClickAdd}>Click Me to Add</button>
+        <button onClick={this.handleClickExclude}>Click Me to Exclude</button>
       </div>
     );
   }
