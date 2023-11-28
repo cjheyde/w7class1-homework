@@ -6,17 +6,41 @@ class ClickCounterClass extends Component {
       count: 0,
     };
   }
-  handleClick = () => {
+
+  handleClickExclude = () => {
+    this.setState((prevState) => ({
+      count: prevState.count - 1,
+    }));
+  };
+
+  handleClickAdd = () => {
     this.setState((prevState) => ({
       count: prevState.count + 1,
     }));
   };
+
+  errorMessage = () => {
+    alert("Count cannot be negative.")
+  }
+
   render() {
     return (
       <div className="blue">
         <h2>Click Counter - Class Component</h2>
         <p>Count: {this.state.count}</p>
-        <button onClick={this.handleClick}>Click Me</button>
+        <button onClick={this.handleClickAdd}>Click Me to Add</button>
+        <button
+          onClick={
+            this.state.count !== 0 ? (
+              this.handleClickExclude
+            ) :
+            (
+              this.errorMessage
+            )
+          }
+        >
+          Click Me to Exclude
+        </button>
       </div>
     );
   }
